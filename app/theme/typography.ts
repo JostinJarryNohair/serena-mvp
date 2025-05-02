@@ -6,11 +6,12 @@ export const typography = {
       large: 18,
       xlarge: 24,
       xxlarge: 32,
+      title:54,
     },
     fontWeights: {
-      regular: "400",
-      medium: "500",
-      semiBold: "600",
-      bold: "700",
+      regular: 400,
+      medium: 500,
+      semiBold: 600,
+      bold: 700,
     },
   };
