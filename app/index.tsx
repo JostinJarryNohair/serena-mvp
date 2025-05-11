@@ -1,7 +1,8 @@
 import React from "react";
 import { Text, View, StyleSheet, SafeAreaView, Image } from "react-native";
-import { colors, typography } from "../theme";
-import Button from "../components/Button";
+import { colors, typography } from "./theme";
+import Button from "./components/Button";
+import cat from '../assets/images/cat.png';
 
 export default function Index() {
   return (
@@ -14,7 +15,7 @@ export default function Index() {
         
         <View style={styles.imageContainer}>
           <Image 
-            source={require('../../assets/images/cat.png')}
+            source={cat}
             style={styles.catImage}
             resizeMode="contain"
           />
