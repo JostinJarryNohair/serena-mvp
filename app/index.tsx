@@ -1,7 +1,6 @@
 import React from "react";
-import { Text, View, StyleSheet, SafeAreaView, Image } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView, Image, TouchableOpacity } from "react-native";
 import { colors, typography } from "../theme";
-import Button from "./components/Button";
 import cat from '../assets/images/cat.png';
 
 export default function Index() {
@@ -13,23 +12,18 @@ export default function Index() {
           Je suis Serena, et je suis ici pour vous aider.
         </Text>
         
-        <View style={styles.imageContainer}>
           <Image 
             source={cat}
             style={styles.catImage}
             resizeMode="contain"
           />
-        </View>
         
-        <Button 
-          title="J'ai une crise" 
-          
-          onPress={() => {
-            console.log("Crisis button pressed");
-          }}
-          style={styles.crisisButton}
-          textStyle={{fontSize: typography.fontSizes.xxlarge,fontWeight: "400"}}
-        />
+        <TouchableOpacity
+        style={styles.crisisButton}
+        onPress={() => console.log("About button pressed")}  // Navigate to "About" page
+      >
+        <Text style={styles.crisisButtonText}>J&apos;ai une crise</Text>
+      </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -43,40 +37,36 @@ const styles = StyleSheet.create({
   
   content: {
     flex: 1,
-    justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 24,
-    paddingTop: 60,
-    paddingBottom: 120, // Extra space at bottom for tab navigation
   },
   greeting: {
     fontSize: typography.fontSizes.title,
     fontWeight: "600",
     color: colors.primary,
-    textAlign: "center",
-    marginBottom: 8,
   },
   subtext: {
     fontSize: typography.fontSizes.xlarge,
     color: colors.primary,
     textAlign: "center",
     opacity: 0.8,
-    marginBottom: 20,
     fontWeight: "400",
   },
-  imageContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
+
   catImage: {
-    width: 300,
-    height: 300,
+    width: 350,
+    height: 350,
   },
+
   crisisButton: {
-    width: "100%",
-    marginBottom: 24,
-  
+    backgroundColor: colors.primary,
+paddingVertical: 12,
+paddingHorizontal: 24,
+alignItems: 'center',
+borderRadius: 60,   
+  },
+  crisisButtonText: {
+    color: 'white',
     fontSize: typography.fontSizes.xxlarge,
   },
 });
