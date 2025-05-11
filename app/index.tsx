@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet, SafeAreaView, Image } from "react-native";
-import { colors, typography } from "./theme";
+import { colors, typography } from "../theme";
 import Button from "./components/Button";
 import cat from '../assets/images/cat.png';
 

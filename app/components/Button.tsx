@@ -7,7 +7,7 @@ import {
   TextStyle,
   ActivityIndicator
 } from 'react-native';
-import { colors } from '../theme';
+import { colors } from '../../theme';
 
 interface ButtonProps {
   readonly title: string;
