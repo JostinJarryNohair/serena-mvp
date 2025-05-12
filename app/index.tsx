@@ -1,7 +1,8 @@
 import React from "react";
-import { Text, View, StyleSheet, SafeAreaView, Image, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { colors, typography } from "../theme";
 import cat from '../assets/images/cat.png';
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   return (
