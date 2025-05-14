@@ -19,20 +19,27 @@ export default function Index() {
         </Text>
         <View style={styles.catContainer}>
           <Image source={cat} style={styles.catImage} resizeMode="contain" />
+        </View>
 
+        <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.crisisButton}
-            onPress={() => console.log("About button pressed")} // Navigate to "About" page
+            onPress={() => console.log("Crisis button pressed")}
+            accessibilityLabel="J'ai une crise button"
+            accessibilityHint="Press this button if you are experiencing a crisis"
           >
             <Text style={styles.crisisButtonText}>J&apos;ai une crise</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.groundingButton}
+            onPress={() => router.push("/grounding")}
+            accessibilityLabel="Exercice de grounding button"
+            accessibilityHint="Press this button to access grounding exercises"
+          >
+            <Text style={styles.groundingButtonText}>Exercice de grounding</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          style={styles.groundingButton}
-          onPress={() => router.push("/grounding")} // Navigate to "About" page
-        >
-          <Text style={styles.groundingButtonText}>Exercice de grounding</Text>
-        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -61,6 +68,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     opacity: 0.8,
     fontWeight: "400",
+    marginBottom: 24,
   },
 
   catImage: {
@@ -71,33 +79,51 @@ const styles = StyleSheet.create({
   catContainer: {
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+    marginBottom: 32,
+  },
+
+  buttonContainer: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 20,
   },
 
   crisisButton: {
     backgroundColor: colors.primary,
-    paddingVertical: 12,
+    paddingVertical: 16,
     paddingHorizontal: 24,
     alignItems: "center",
     borderRadius: 60,
-    width: "80%",
+    width: "90%",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   groundingButton: {
     backgroundColor: colors.primary,
-    paddingVertical: 12,
+    paddingVertical: 14,
     paddingHorizontal: 24,
     alignItems: "center",
     borderRadius: 60,
-    marginTop: 20,
+    width: "85%",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2.62,
+    elevation: 4,
   },
  
   groundingButtonText: {
     color: "white",
-    fontSize: typography.fontSizes.xlarge,
-
+    fontSize: typography.fontSizes.large,
+    fontWeight: "500",
   },
   crisisButtonText: {
     color: "white",
     fontSize: typography.fontSizes.xxlarge,
+    fontWeight: "600",
   },
 });
