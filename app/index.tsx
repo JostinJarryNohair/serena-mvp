@@ -7,11 +7,12 @@ import {
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
 import { router } from "expo-router";
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Index() {
   const insets = useSafeAreaInsets();
   return (
-    <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
+    <SafeAreaView style={[styles.container, { paddingTop: insets.top , paddingBottom: insets.bottom }]}>
       <View style={styles.content}>
         <Text style={styles.greeting}>Allo!</Text>
         <Text style={styles.subtext}>
@@ -31,13 +32,36 @@ export default function Index() {
             <Text style={styles.crisisButtonText}>J&apos;ai une crise</Text>
           </TouchableOpacity>
 
+          <View style={styles.secondaryButtonsRow}>
+            <TouchableOpacity
+              style={styles.insightButton}
+              onPress={() => console.log("Insights button pressed")}
+              accessibilityLabel="Insights button"
+              accessibilityHint="Press this button to access insights"
+            >
+              <Ionicons name="search" size={20} color="black" style={styles.buttonIcon} />
+              <Text style={styles.insightButtonText}>Insights</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.voiceButton}
+              onPress={() => router.push("/grounding")}
+              accessibilityLabel="Grounding button"
+              accessibilityHint="Press this button to access grounding features"
+            >
+              <Ionicons name="volume-medium" size={20} color="white" style={styles.buttonIcon} />
+              <Text style={styles.secondaryButtonText}>Grounding</Text>
+            </TouchableOpacity>
+          </View>
+          
           <TouchableOpacity
-            style={styles.groundingButton}
-            onPress={() => router.push("/grounding")}
-            accessibilityLabel="Exercice de grounding button"
-            accessibilityHint="Press this button to access grounding exercises"
+            style={styles.premiumButton}
+            onPress={() => console.log("Premium button pressed")}
+            accessibilityLabel="Premium button"
+            accessibilityHint="Press this button to access premium features"
           >
-            <Text style={styles.groundingButtonText}>Exercice de grounding</Text>
+            <Ionicons name="lock-closed" size={18} color="#5D4037" style={styles.buttonIcon} />
+            <Text style={styles.premiumButtonText}>Premium</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -48,7 +72,6 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.secondary,
   },
 
   content: {
@@ -60,7 +83,6 @@ const styles = StyleSheet.create({
     fontSize: typography.fontSizes.title,
     fontWeight: "600",
     color: colors.primary,
-    marginTop: 20,
   },
   subtext: {
     fontSize: typography.fontSizes.xlarge,
@@ -68,7 +90,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     opacity: 0.8,
     fontWeight: "400",
-    marginBottom: 24,
   },
 
   catImage: {
@@ -79,14 +100,20 @@ const styles = StyleSheet.create({
   catContainer: {
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 32,
   },
 
   buttonContainer: {
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    gap: 20,
+    gap: 16,
+  },
+
+  secondaryButtonsRow: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between",
+    gap: 10,
   },
 
   crisisButton: {
@@ -95,32 +122,86 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     alignItems: "center",
     borderRadius: 60,
-    width: "90%",
+    width: "100%",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
   },
-  groundingButton: {
-    backgroundColor: colors.primary,
+  
+  insightButton: {
+    backgroundColor: "#E8EAF6", // Light blue/gray color
     paddingVertical: 14,
-    paddingHorizontal: 24,
+    paddingHorizontal: 16,
     alignItems: "center",
     borderRadius: 60,
-    width: "85%",
+    flexDirection: "row",
+    justifyContent: "center",
+    flex: 1,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.2,
     shadowRadius: 2.62,
     elevation: 4,
   },
- 
-  groundingButtonText: {
-    color: "white",
-    fontSize: typography.fontSizes.large,
-    fontWeight: "500",
+  
+  voiceButton: {
+    backgroundColor: colors.primary,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    alignItems: "center",
+    borderRadius: 60,
+    flexDirection: "row",
+    justifyContent: "center",
+    flex: 1,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2.62,
+    elevation: 4,
   },
+
+  premiumButton: {
+    backgroundColor: "#F5F5DC", // Beige color
+    paddingVertical: 12,
+    alignItems: "center",
+    borderRadius: 60,
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "40%",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 1.5,
+    elevation: 2,
+  },
+  
+  buttonIcon: {
+    marginRight: 8,
+  },
+  
+  secondaryButtonText: {
+    color: "white",
+    fontSize: typography.fontSizes.medium,
+    fontWeight: "500",
+    textAlign: "center",
+  },
+  
+  insightButtonText: {
+    color: "black",
+    fontSize: typography.fontSizes.medium,
+    fontWeight: "500",
+    textAlign: "center",
+  },
+  
+  premiumButtonText: {
+    color: "#5D4037", // Brown text
+    fontSize: typography.fontSizes.medium,
+    fontWeight: "500",
+    textAlign: "center",
+  },
+  
   crisisButtonText: {
     color: "white",
     fontSize: typography.fontSizes.xxlarge,
